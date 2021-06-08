@@ -57,11 +57,11 @@ class ReviewController extends Controller
             'commentary' => 'required',
             'rating'=>'required',
         ],$messages);
-       if (Review::where('product',$id)->first()==null){
+       if (Review::where('user',$review->user)->first()==null){
         $review->save();
         return back()->with('msg','Recenze uložena');
        }
-       else return back()->with('reviewerror','Lze přidat pouze 1 recenzi na 1 produkt');
+       else return back()->with('error','Lze přidat pouze 1 recenzi na 1 produkt');
 
     }
 

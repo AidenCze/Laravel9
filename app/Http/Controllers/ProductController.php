@@ -32,12 +32,10 @@ class ProductController extends Controller
         $product=Product::where('id', $id)->first();
         $producer=Producer::where('id',$product->producer)->first();
         $reviews=Review::where('product',$id)->get();
-        $filtered = $reviews->only(['user']);
-        $filtered->all();
         $users=null;
         $rating=null;
         if(count($reviews)>=1){
-        $users=User::where('id',$reviews->pluck(['user']))->get();
+        $users=User::whereIn('id',$reviews->pluck(['user']))->get();
         $rating = DB::table('reviews')
         ->where('product', $id)
         ->avg('rating');

@@ -22,9 +22,11 @@
            </button>
            @endif
 
-        @foreach ($reviews as $review)
+
         @foreach ($users as $user)
         <h5>Nahrál uživatel: {{ $user->username }}</h5>
+        <img src="/storage/photo/icon/{{$user->icon}}" alt="" height="35px" width="35px">
+        @foreach ($reviews as $review)
         @endforeach
         <h5>Hodnocení: {{ $review->rating }}*</h5>
         <p>{{ $review->commentary }}</p>
