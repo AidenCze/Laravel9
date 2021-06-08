@@ -8,7 +8,7 @@
 <label for="email">Email</label>
 <input type="text" id="email" name="email">
 <label for="password">Heslo</label>
-<input type="text" id="password" name="password">
+<input type="password" id="password" name="password">
 <input type="submit">
 </form>
 @if ($errors->any())

@@ -35,9 +35,9 @@ class LoginUserController extends Controller
 
                 If (Auth::attempt($credentials)) {
                     If(Auth::user()->username=='admin'){
-                    return redirect('/admin')->with('error','LOOOOL');
+                    return redirect('/admin');
                     }
-                    else return back()-> with('loginerror','LOOOOL');
+                    else return back();
                 }
                 else return back()-> with('loginerror','ERRORR LOOLOLOOLOLOLOLOL');
 

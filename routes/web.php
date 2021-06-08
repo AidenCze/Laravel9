@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\SitesController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReviewController;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
 
@@ -27,15 +28,22 @@ Route::get('/', function () {
 Route::get('/test',[SitesController::class, 'test_redirect']);
 Route::get('/logout',[UserController::class, 'lougout']);
 Route::get('/produkt/{id}',[ProductController::class, 'product']);
+Route::post('/produkt/{id}',[ReviewController::class, 'store']);
 
 Route::middleware(['user'])->group(function () {
 Route::get('/register',[UserController::class, 'register_redirect']);
 Route::post('/register', [UserController::class, 'store']);
 Route::get('/login',  [LoginUserController::class, 'redirect']);
-Route::post('/test',[LoginUserController::class, 'dologin']);
 Route::post('/login',  [LoginUserController::class, 'dologin']);
 });
 
+Route::middleware(['user2'])->group(function () {
+    Route::get('/dashboard',function(){
+        return view('dashboard');
+    });
+    Route::get('/change_password',[UserController::class, 'change_password']);
+    Route::post('/change_password',[UserController::class, 'change_password']);
+});
 Route::middleware(['admin'])->group(function () {
 Route::get('/producer',[ProducerController::class, 'store']);
 Route::post('/producer',[ProducerController::class, 'store']);

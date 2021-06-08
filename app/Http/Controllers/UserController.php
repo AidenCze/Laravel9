@@ -73,6 +73,32 @@ return view('admin');
 public function register_redirect(){
 return view('register');
 }
+public function change_password(Request $request){
+    $messages = [
+        'password.required' => 'Zadejte staré heslo',
+        'newpassword.required' => 'Zadejte nové heslo',
+        'newpasswordagain.required' => 'Zadejte nové heslo znovu'
+      ];
+
+    $request->validate([
+        'password' => 'required',
+        'newpassword' => 'required',
+        'newpasswordagain' => 'required'
+    ],$messages);
+
+    $current_password = Auth::User()->password;
+    if(Hash::check(request('password'), $current_password)){
+        $user_id = Auth::User()->id;
+        $user = User::find($user_id);
+        $user->password = Hash::make(request('newpassword'));
+        $user->save();
+    }
+    return redirect('/dashboard')->with('msg','Heslo změněno');
+
+}
+public function change_icon(){
+
+}
     /**
      * Show the form for editing the specified resource.
      *

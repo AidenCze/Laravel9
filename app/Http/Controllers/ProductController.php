@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Producer;
 use App\Models\Product;
+use App\Models\Review;
 use App\Models\Subcategory;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,12 +25,30 @@ class ProductController extends Controller
                     ->join('subcategories','subcategories.id','=','products.subcategory')
                     ->where('subcategories.category',$id)
                     ->get('products.*');
+
        return view('product',['products'=>$products]);
     }
     public function product($id){
         $product=Product::where('id', $id)->first();
         $producer=Producer::where('id',$product->producer)->first();
-            return view('product',['product'=>$product,'producer'=>$producer]);
+        $reviews=Review::where('product',$id)->get();
+        $filtered = $reviews->only(['user']);
+        $filtered->all();
+        $users=null;
+        $rating=null;
+        if(count($reviews)>=1){
+        $users=User::where('id',$reviews->pluck(['user']))->get();
+        $rating = DB::table('reviews')
+        ->where('product', $id)
+        ->avg('rating');
+       $rating= round($rating,2);
+        }
+
+    /*     DB::table('users')
+        ->whereIn('id',$reviews)
+        ->get('users.*'); */
+
+            return view('product',['product'=>$product,'producer'=>$producer,'reviews'=>$reviews,'users'=>$users,'rating'=>$rating]);
     }
     /**
      * Show the form for creating a new resource.

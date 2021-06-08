@@ -23,6 +23,30 @@
 </script>
 @endif
 
+@if($errors->any() && session('form')=='review')
+<script>
+	$(document).ready(function(){
+		$("#ReviewFormModal").modal('show');
+	});
+</script>
+@endif
+
+@if(session('error'))
+<script>
+	$(document).ready(function(){
+		$("#Error").modal('show');
+	});
+</script>
+@endif
+
+@if(session('msg'))
+<script>
+	$(document).ready(function(){
+		$("#Msg").modal('show');
+	});
+</script>
+@endif
+
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -31,8 +55,11 @@
 <body>
     @if (Auth::check())
     <div class="position-absolute top-0 end-0">
-        <p>{{ Auth::user()->username }}</p>
-        <a href="/logout">Logout</a>
+        <a class="nav-link" href="#" data-bs-toggle="dropdown"><img src="/storage/photo/icon/{{ Auth::user()->icon }}" alt="" class="float-left" height="50px" width="50px"></a>
+        <div class="dropdown-menu mt-5"  style="width:100%">
+        <a href="/dashboard">Účet</a><br>
+        <a href="/logout">Odhlásit se</a>
+        </div>
     </div>
     @else   <div class="position-absolute top-0 end-0">
      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#LoginFormModal">
@@ -56,7 +83,7 @@
                         @foreach ($categories as $category)
                         @if($category->main_category=='1')
                         <div class="col-3">
-                            <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
+                            <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
                             <a href="/{{ $category->name }}/produkty"><h4>{{ $category->name }}</h4></a>
 
                             <a href="#">Link 1</a>
@@ -80,7 +107,7 @@
                       @foreach ($categories as $category)
                       @if($category->main_category=='2')
                       <div class="col-3">
-                          <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
+                          <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
                           <a href="/{{ $category->name }}/produkty"><h4>{{ $category->name }}</h4></a>
 
                           <a href="#">Link 1</a>
@@ -104,7 +131,7 @@
                       @foreach ($categories as $category)
                       @if($category->main_category=='3')
                       <div class="col-3">
-                          <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
+                          <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
                           <a href="/{{ $category->name }}/produkty"><h4>{{ $category->name }}</h4></a>
 
                           <a href="#">Link 1</a>
@@ -127,7 +154,7 @@
                       @foreach ($categories as $category)
                       @if($category->main_category=='4')
                       <div class="col-3">
-                          <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
+                          <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
                           <a href="/{{ $category->name }}/produkty"><h4>{{ $category->name }}</h4></a>
 
                           <a href="#">Link 1</a>
@@ -150,7 +177,7 @@
                       @foreach ($categories as $category)
                       @if($category->main_category=='5')
                       <div class="col-3">
-                          <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
+                          <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
                           <a href="/{{ $category->name }}/produkty"><h4>{{ $category->name }}</h4></a>
 
                           <a href="#">Link 1</a>
@@ -167,6 +194,53 @@
             </ul>
         </nav>
         </div>
+
+
+
+    <div class="modal fade in" id="Error" tabindex="-1" aria-labelledby="ErrorLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="bg-red-50 p-4 rounded flex items-start text-red-600 shadow-lg px-8 pt-6 pb-8 mb-4 max-w-sm">
+                    <div class=" px-3">
+
+
+                <ul class="list-disc list-inside">
+
+                    {{ session('error') }}
+                </div>
+                </ul>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="modal fade in" id="Msg" tabindex="-1" aria-labelledby="MsgLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="bg-green-50 p-4 rounded flex items-start text-green-600 shadow-lg px-8 pt-6 pb-8 mb-4 max-w-sm">
+                    <div class=" px-3">
+
+
+                <ul class="list-disc list-inside">
+
+                    {{ session('msg') }}
+                </div>
+                </ul>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
 <div class="modal fade in" id="LoginFormModal" tabindex="-1" aria-labelledby="LoginFormModalLabel" aria-hidden="true">
