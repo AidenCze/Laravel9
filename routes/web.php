@@ -29,6 +29,7 @@ Route::get('/test',[SitesController::class, 'test_redirect']);
 Route::get('/logout',[UserController::class, 'lougout']);
 Route::get('/produkt/{id}',[ProductController::class, 'product']);
 Route::post('/produkt/{id}',[ReviewController::class, 'store']);
+Route::get('/{name}/produkty',[ProductController::class, 'categoryproduct']);
 
 Route::middleware(['user'])->group(function () {
 Route::get('/register',[UserController::class, 'register_redirect']);

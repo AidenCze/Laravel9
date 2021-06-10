@@ -40,7 +40,7 @@ class CategoryController extends Controller
     {
         $category = new Category();
         $category->name = request('name');
-
+        $category->main_category=request('main_category');
         $messages = [
             'name.required' => 'Zadejte název',
             'photo.required' => 'Zadejte soubor',
@@ -55,7 +55,7 @@ class CategoryController extends Controller
 
         $id=DB::table('categories')->max('id')+1;
         $file = $request->file('photo');
-        $file->storeAs('public/photo', $id . '.' . $file->getClientOriginalExtension());
+        $file->storeAs('public/photo/category', $id . '.' . $file->getClientOriginalExtension());
         $filename=$id . '.' . $file->getClientOriginalExtension();
 
         $category->photo = $filename;

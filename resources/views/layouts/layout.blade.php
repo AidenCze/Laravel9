@@ -83,12 +83,8 @@
                         @foreach ($categories as $category)
                         @if($category->main_category=='1')
                         <div class="col-3">
-                            <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
                             <a href="/{{ $category->name }}/produkty"><h4>{{ $category->name }}</h4></a>
-
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
+                            <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px"></a>
                           </div>
                           @endif
                         @endforeach
@@ -106,13 +102,8 @@
 
                       @foreach ($categories as $category)
                       @if($category->main_category=='2')
-                      <div class="col-3">
-                          <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
-                          <a href="/{{ $category->name }}/produkty"><h4>{{ $category->name }}</h4></a>
-
-                          <a href="#">Link 1</a>
-                          <a href="#">Link 2</a>
-                          <a href="#">Link 3</a>
+                      < <a href="/{{ $category->name }}/produkty"><h4>{{ $category->name }}</h4></a>
+                      <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px"></a>
                         </div>
                         @endif
                       @endforeach
@@ -131,12 +122,8 @@
                       @foreach ($categories as $category)
                       @if($category->main_category=='3')
                       <div class="col-3">
-                          <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
-                          <a href="/{{ $category->name }}/produkty"><h4>{{ $category->name }}</h4></a>
-
-                          <a href="#">Link 1</a>
-                          <a href="#">Link 2</a>
-                          <a href="#">Link 3</a>
+                        <a href="/{{ $category->name }}/produkty"><h4>{{ $category->name }}</h4></a>
+                        <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px"></a>
                         </div>
                         @endif
                       @endforeach
@@ -154,12 +141,8 @@
                       @foreach ($categories as $category)
                       @if($category->main_category=='4')
                       <div class="col-3">
-                          <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
-                          <a href="/{{ $category->name }}/produkty"><h4>{{ $category->name }}</h4></a>
-
-                          <a href="#">Link 1</a>
-                          <a href="#">Link 2</a>
-                          <a href="#">Link 3</a>
+                        <a href="/{{ $category->name }}/produkty"><h4>{{ $category->name }}</h4></a>
+                        <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px"></a>
                         </div>
                         @endif
                       @endforeach
@@ -177,12 +160,8 @@
                       @foreach ($categories as $category)
                       @if($category->main_category=='5')
                       <div class="col-3">
-                          <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px" class="float-left"></a>
-                          <a href="/{{ $category->name }}/produkty"><h4>{{ $category->name }}</h4></a>
-
-                          <a href="#">Link 1</a>
-                          <a href="#">Link 2</a>
-                          <a href="#">Link 3</a>
+                        <a href="/{{ $category->name }}/produkty"><h4>{{ $category->name }}</h4></a>
+                        <a href="/{{ $category->name }}/produkty"><img src="/storage/photo/category/{{ $category->photo }}" alt="" style="height: 100px"></a>
                         </div>
                         @endif
                       @endforeach

@@ -17,11 +17,13 @@
     @csrf
     <label for="name">Název</label>
     <input type="text" id="name" name="name">
-    <select name="category" id="category">
-        <option value="">Kategorie</option>
-        @foreach ($categories as $category)
-        <option value="{{$category->id}}">{{ $category->name }}</option>
-        @endforeach
+    <select name="main_category" id="main_category">
+        <option value="">Hlavní kategorie</option>
+        <option value="1">Mobily, tablety</option>
+        <option value="2">Počítače, notebooky</option>
+        <option value="3">Komponenty</option>
+        <option value="4">Televize, audio</option>
+        <option value="5">PC doplňky</option>
     </select>
     <label for="photo">Fotka</label>
     <input type="file" id="photo" name="photo">
@@ -36,11 +38,9 @@
     <input type="text" id="name" name="name">
     <select name="category" id="category">
         <option value="">Kategorie</option>
-        <option value="1">Mobily, tablety</option>
-        <option value="2">Počítače, notebooky</option>
-        <option value="3">Komponenty</option>
-        <option value="4">Televize, audio</option>
-        <option value="5">PC doplňky</option>
+        @foreach ($categories as $category)
+        <option value="{{$category->id}}">{{ $category->name }}</option>
+        @endforeach
     </select>
     <label for="photo">Fotka</label>
     <input type="file" id="photo" name="photo">

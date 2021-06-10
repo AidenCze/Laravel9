@@ -22,7 +22,7 @@
            </button>
            @endif
 
-
+           @if(count($reviews)>=1)
         @foreach ($users as $user)
         <h5>Nahrál uživatel: {{ $user->username }}</h5>
         <img src="/storage/photo/icon/{{$user->icon}}" alt="" height="35px" width="35px">
@@ -37,7 +37,7 @@
         <h5><span style="color: red">-</span> {{ $con }}</h5>
         @endforeach
         @endforeach
-
+@endif
         <div class="modal fade in" id="ReviewFormModal" tabindex="-1" aria-labelledby="ReviewFormModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">

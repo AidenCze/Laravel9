@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Category;
 use App\Models\Producer;
 use App\Models\Product;
 use App\Models\Review;
@@ -47,6 +49,12 @@ class ProductController extends Controller
         ->get('users.*'); */
 
             return view('product',['product'=>$product,'producer'=>$producer,'reviews'=>$reviews,'users'=>$users,'rating'=>$rating]);
+    }
+    public function categoryproduct($name){
+        $categoryid=Category::where('name',$name)->get();
+        $subcategoryid=Subcategory::whereIn('category',$categoryid->pluck(['id']))->get();
+        $products=Product::whereIn('subcategory', $subcategoryid->pluck(['id']))->get();
+        return view('test',['products'=>$products]);
     }
     /**
      * Show the form for creating a new resource.
