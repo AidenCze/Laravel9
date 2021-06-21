@@ -23,11 +23,12 @@
            @endif
 
            @if(count($reviews)>=1)
-        @foreach ($users as $user)
-        <h5>Nahrál uživatel: {{ $user->username }}</h5>
-        <img src="/storage/photo/icon/{{$user->icon}}" alt="" height="35px" width="35px">
+
+
         @foreach ($reviews as $review)
-        @endforeach
+
+        <h5>Nahrál uživatel: {{ $review->user }}</h5>
+
         <h5>Hodnocení: {{ $review->rating }}*</h5>
         <p>{{ $review->commentary }}</p>
         @foreach ($review->pros as $pro)

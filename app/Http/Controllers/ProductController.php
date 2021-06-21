@@ -42,6 +42,7 @@ class ProductController extends Controller
         ->where('product', $id)
         ->avg('rating');
        $rating= round($rating,2);
+     
         }
 
     /*     DB::table('users')

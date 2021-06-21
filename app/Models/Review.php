@@ -12,4 +12,7 @@ class Review extends Model
         'pros' => 'array',
         'cons' => 'array'
     ];
+    public function user(){
+        return $this->belongsTo('App\User', 'username');
+    }
 }

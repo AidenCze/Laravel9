@@ -10,7 +10,9 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-
+    public function reviews(){
+        return $this->hasMany('App\Review');
+    }
     /**
      * The attributes that are mass assignable.
      *
