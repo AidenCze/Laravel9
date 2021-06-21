@@ -39,7 +39,7 @@ class LoginUserController extends Controller
                     }
                     else return back();
                 }
-                else return back()-> with('loginerror','ERRORR LOOLOLOOLOLOLOLOL');
+                else return back()-> with('loginerror','Chybné přihlašovací údaje');
 
     }
 }
